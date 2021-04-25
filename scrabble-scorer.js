@@ -116,9 +116,6 @@ let newPointStructure = transform(oldPointStructure);
 
 function runProgram() {
   let word = initialPrompt();
-  //  console.log(oldScrabbleScorer(word));
-  //  console.log(simpleScore(word));
-  //  console.log(vowelBonusScore(word));
   console.log(scorerPrompt(word));
 }
 
