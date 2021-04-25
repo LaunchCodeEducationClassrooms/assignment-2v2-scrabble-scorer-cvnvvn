@@ -51,7 +51,14 @@ let vowelBonusScore = function(word) {
   return vowelCount;
 };
 
-let scrabbleScore;
+let scrabbleScore = function(word) {
+  word = word.toLowerCase();
+  let scrabblePoints = 0;
+  for (i = 0; i < word.length; i++) {
+    scrabblePoints += newPointStructure[word[i]];
+  }
+  return scrabblePoints;
+};
 
 const scoringAlgorithms = [
   {
@@ -67,7 +74,7 @@ const scoringAlgorithms = [
   {
     name: 'Scrabble',
     description: 'The traditional scoring algorithm',
-    scoringFunction: oldScrabbleScorer
+    scoringFunction: scrabbleScore
   }
 ];
 
@@ -85,7 +92,7 @@ Enter 0, 1, or 2: `)
     } else if (number === '1') {
       return `Score for '${word}': ${scoringAlgorithms[1].scoringFunction(word)}`;
     } else if (number === '2') {
-      return `Score for '${word}': \n${scoringAlgorithms[2].scoringFunction(word)}`;
+      return `Score for '${word}': ${scoringAlgorithms[2].scoringFunction(word)}`;
     } else {
       console.log('\nPlease enter 0, 1, or 2\n')
     }
